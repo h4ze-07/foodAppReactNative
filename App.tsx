@@ -20,8 +20,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor={'#FFF'} barStyle={'dark-content'} />
-      <Stack.Navigator>
-        <Stack.Screen name='Onboarding' component={OnboardingScreen} options={{headerShown: false}} />
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name='Onboarding' component={OnboardingScreen} />
         <Stack.Screen name='Home' component={HomeScreen} />
         <Stack.Screen name='Details' component={DetailsScreen} />
       </Stack.Navigator>

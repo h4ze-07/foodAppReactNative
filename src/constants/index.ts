@@ -1,21 +1,21 @@
 export const onboarding = [
     {
         id: '1',
-        heading: '',
-        description: '',
-        image: (require('../assets/onboard.png')), 
+        heading: 'Delicious Food',
+        description: 'We help you to find best and delicious food',
+        image: (require('../assets/onboardImage.png')), 
     },
     {
         id: '2',
-        heading: '',
-        description: '',
-        image: (require('../assets/onboard.png')), 
+        heading: 'Variety of Products',
+        description: 'You can search for Your favorite food',
+        image: (require('../assets/onboardImage.png')), 
     },
     {
         id: '3',
-        heading: '',
-        description: '',
-        image: (require('../assets/onboard.png')), 
+        heading: 'Custom Approach',
+        description: 'Our job is to satisfy all clients needs',
+        image: (require('../assets/onboardImage.png')), 
     },
 ]
 

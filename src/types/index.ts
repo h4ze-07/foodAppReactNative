@@ -27,4 +27,19 @@ export type TOnboardingItemProps = {
     handleStart: PureFuncWithoutParams,
 }
 
+export type TCategoriesProps = {
+    id: string,
+    name: string,
+    activeCategory: string,
+    setCategory: (name: string) => void,
+    image: ImageSourcePropType,
+    onClick: PureFuncWithoutParams,
+}
 
+export type TFoodCardProps = {
+    id: string,
+    name: string,
+    ingredients: string,
+    price: string,
+    image: ImageSourcePropType,
+}

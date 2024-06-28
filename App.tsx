@@ -11,7 +11,7 @@ import React from 'react'
 const App = () => {
   return (
     <View>
-      <Text>App</Text>
+      <Text className='mt-[30px] font-bold text-center text-[20px]'>App</Text>
     </View>
   )
 }

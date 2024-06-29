@@ -43,3 +43,10 @@ export type TFoodCardProps = {
     price: string,
     image: ImageSourcePropType,
 }
+
+export type ParamList = {
+    Details: {
+      image: ImageSourcePropType,
+      name: string
+    };
+  };

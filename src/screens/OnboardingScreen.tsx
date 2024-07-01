@@ -8,22 +8,23 @@ import OnboardingItem from '../components/OnboardingItem'
 
 const OnboardingScreen = ({navigation}: any) => {
     const [currentScreen, setCurrentScreen] = useState(1);
-    const { width, height } = Dimensions.get('window');
+    const { width } = Dimensions.get('window');
+    const truncedWidth = Math.floor(width);
     const ref = useRef<FlatList>(null);
 
     const handlScrollList = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-        const screen = Math.floor(e.nativeEvent.contentOffset.x / width) + 1;
+        const screen = Math.floor(e.nativeEvent.contentOffset.x / truncedWidth) + 1;
         setCurrentScreen(screen)
     }
 
     const handleSkipClick = () => {
-        const offset = 3 * width;
+        const offset = 3 * truncedWidth;
         ref?.current?.scrollToOffset({ offset: offset });
         setCurrentScreen(3);
     }
 
     const handleNextClick = () => {
-        const offset = currentScreen * width;
+        const offset = currentScreen * truncedWidth;
         ref?.current?.scrollToOffset({ offset: offset });
         setCurrentScreen(currentScreen + 1);
     }

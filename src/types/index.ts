@@ -1,4 +1,5 @@
 import { ImageSourcePropType } from "react-native"
+import { appStore } from "../store";
 
 type PureFuncWithoutParams = () => void;
 
@@ -15,13 +16,13 @@ export type TOnboardingProps = {
     id: string,
     heading: string,
     description: string,
-    image: ImageSourcePropType,    
+    image: ImageSourcePropType,
 }
 
 export type TOnboardingItemProps = {
-    item: TOnboardingProps, 
-    width: number, 
-    currentScreen: number, 
+    item: TOnboardingProps,
+    width: number,
+    currentScreen: number,
     handleSkipClick: PureFuncWithoutParams,
     handleNextClick: PureFuncWithoutParams,
     handleStart: PureFuncWithoutParams,
@@ -44,9 +45,17 @@ export type TFoodCardProps = {
     image: ImageSourcePropType,
 }
 
+
+export type TStoreItem = TFoodCardProps;
+
+
+export type TStoreContext = {
+    store: appStore
+}
+
 export type ParamList = {
     Details: {
-      image: ImageSourcePropType,
-      name: string
+        image: ImageSourcePropType,
+        name: string
     };
-  };
+};

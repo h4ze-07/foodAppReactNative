@@ -31,6 +31,7 @@ const SkeletonHomeScreen = () => {
                     className='mt-[30px] mb-[50px]'
                 />
 
+                {/* FOOD */}
                 <View className='mx-auto'>
                     <FlatList
                         data={[1, 2, 3, 4]}

@@ -5,18 +5,31 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { ParamList } from '../types';
 import CustomButton from '../components/CustomButton';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { useStore } from '../store/StoreProvider';
+import { observer } from 'mobx-react-lite';
 
 const DetailsScreen = () => {
-
-  const route = useRoute<RouteProp<ParamList, 'Details'>>();
   const [isLiked, setIsLiked] = useState(false);
 
-  useEffect(() => {
+  const {store} = useStore();
+  const route = useRoute<RouteProp<ParamList, 'Details'>>();
 
+  useEffect(() => {
+    setIsLiked(store.isItemInLikedFood(name))
   }, [])
 
-  const { image, name } = route.params;
+  const { image, name, price, ingredients, id } = route.params;
+  const {...itemToLiked} = route.params;
 
+  const handleLikeClick = () => {
+    if (isLiked) {
+      store.removeFromLiked(name)
+      setIsLiked(false);
+    } else if (!isLiked) {
+      store.addToLiked(itemToLiked)
+      setIsLiked(true)
+    }
+  }
 
   return (
     <SafeAreaView className='flex-1 bg-mainWhite'>
@@ -31,7 +44,9 @@ const DetailsScreen = () => {
       <View className='bg-primary flex-1 mt-[30px] rounded-tl-[30px] rounded-tr-[30px] pt-[30px] px-[20px]'>
         <View className='justify-between flex flex-row items-center'>
           <Text className='text-mainWhite font-bold text-[25px]'>{name}</Text>
-          <Pressable className='w-[40] h-[40] rounded-full bg-mainWhite flex flex-row justify-center items-center'>
+          <Pressable className='w-[40] h-[40] rounded-full bg-mainWhite flex flex-row justify-center items-center'
+          onPress={handleLikeClick}
+          >
             <Icon name={!isLiked ? 'heart-o' : 'heart'} size={20} color={"#F9813A"}  />
           </Pressable>
         </View>
@@ -47,4 +62,4 @@ const DetailsScreen = () => {
   )
 }
 
-export default DetailsScreen
+export default observer(DetailsScreen)

@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import React from 'react'
-import { TFoodCardProps } from '../types'
+import { ParamList, TFoodCardProps } from '../types'
 import CustomButton from './CustomButton'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -19,6 +19,8 @@ const FoodItem = ({ name, ingredients, image, price, id }: TFoodCardProps) => {
             name: name,
             image: image,
             id: id,
+            price: price,
+            ingredients: ingredients
         })
     }
 

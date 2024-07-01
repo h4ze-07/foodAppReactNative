@@ -57,5 +57,8 @@ export type ParamList = {
     Details: {
         image: ImageSourcePropType,
         name: string
+        id: string
+        price: string
+        ingredients: string
     };
 };

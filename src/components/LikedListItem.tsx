@@ -8,7 +8,7 @@ import { useStore } from '../store/StoreProvider'
 
 const LikedListItem = ({ image, name, price, ingredients }: TStoreItem) => {
 
-    const {store} = useStore();
+    const { store } = useStore();
 
     return (
         <View className='flex flex-row border items-center justify-between px-4 rounded-[20px] border-slate-200 overflow-hidden bg-mainWhite py-3'
@@ -22,11 +22,11 @@ const LikedListItem = ({ image, name, price, ingredients }: TStoreItem) => {
                 <Text className='font-bold text-mainDark text-[18px]'>${price}</Text>
             </View>
             <View className=''>
-                <CustomButton 
-                text='Remove' 
-                textStyles='font-bold text-mainWhite' 
-                containerStyles='bg-red-500 rounded-[10px] px-[10] py-[5]' 
-                onClick={() => store.removeFromLiked(name)} 
+                <CustomButton
+                    text='Remove'
+                    textStyles='font-bold text-mainWhite'
+                    containerStyles='bg-red-500 rounded-[10px] px-[10] py-[5]'
+                    onClick={() => store.removeFromLiked(name)}
                 />
             </View>
         </View>

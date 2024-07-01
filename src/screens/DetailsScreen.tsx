@@ -11,7 +11,7 @@ import { observer } from 'mobx-react-lite';
 const DetailsScreen = () => {
   const [isLiked, setIsLiked] = useState(false);
 
-  const {store} = useStore();
+  const { store } = useStore();
   const route = useRoute<RouteProp<ParamList, 'Details'>>();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const DetailsScreen = () => {
   }, [])
 
   const { image, name, price, ingredients, id } = route.params;
-  const {...itemToLiked} = route.params;
+  const { ...itemToLiked } = route.params;
 
   const handleLikeClick = () => {
     if (isLiked) {
@@ -45,9 +45,9 @@ const DetailsScreen = () => {
         <View className='justify-between flex flex-row items-center'>
           <Text className='text-mainWhite font-bold text-[25px]'>{name}</Text>
           <Pressable className='w-[40] h-[40] rounded-full bg-mainWhite flex flex-row justify-center items-center'
-          onPress={handleLikeClick}
+            onPress={handleLikeClick}
           >
-            <Icon name={!isLiked ? 'heart-o' : 'heart'} size={20} color={"#F9813A"}  />
+            <Icon name={!isLiked ? 'heart-o' : 'heart'} size={20} color={"#F9813A"} />
           </Pressable>
         </View>
         <Text className='text-mainWhite text-base mt-[20]'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga similique nihil ratione natus sint praesentium itaque sequi! Nulla fugit eaque nobis molestiae enim dignissimos id, magnam quos nihil saepe cum inventore at, laborum atque accusantium ratione ducimus ullam, neque dolore?</Text>

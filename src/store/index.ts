@@ -12,11 +12,11 @@ export class appStore {
         this.likedFood = [...foods];
         makeAutoObservable(this)
     }
-    
+
     get likedFoodLength() {
         return this.likedFood.length;
     }
-    
+
     get consoleFood() {
         return this.likedFood
     }

@@ -30,7 +30,7 @@ const OnboardingScreen = ({navigation}: any) => {
     }
 
     const handleStart = () => {
-        navigation.navigate('Home')
+        navigation.navigate('Login')
     }
 
     return (

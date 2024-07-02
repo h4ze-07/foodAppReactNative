@@ -1,6 +1,6 @@
 import { FlatList, Image, StyleSheet, Text, TextInput, View } from 'react-native'
 import { ScrollView } from 'react-native-virtualized-view'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchSvg from '../../assets/svg/SearchSvg'
 import { categories, foods } from '../../constants'
@@ -8,8 +8,12 @@ import CategoriesItem from '../../components/CategoriesItem'
 import FoodItem from '../../components/FoodItem'
 
 const HomeTab = () => {
-
+  const [name, setName] = useState('');
   const [activeCategory, setActiveCategory] = useState('');
+
+  useEffect(() => {
+
+  }, [])
 
   const setCategory = (name: string) => {
     setActiveCategory(name)
@@ -22,7 +26,7 @@ const HomeTab = () => {
         {/* INTRO */}
         <View className='flex flex-row justify-between items-center mt-[30px]'>
           <View>
-            <Text className='text-[30px] font-semibold text-mainDark'>Hello, </Text>
+            <Text className='text-[30px] font-semibold text-mainDark'>Hello, {name}</Text>
             <Text className='text-[20px] mt-2 text-mainGrey'>What do you want today</Text>
           </View>
           <View className='w-[60] h-[60] rounded-full overflow-hidden'>
@@ -36,7 +40,7 @@ const HomeTab = () => {
             <SearchSvg width={30} height={30} />
             <TextInput
               placeholder='Search for food'
-              className='text-mainDark text-[18px]cv'
+              className='text-mainDark text-[18px]'
             />
           </View>
         </View>

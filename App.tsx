@@ -8,16 +8,28 @@ import HomeScreen from './src/screens/HomeScreen'
 import DetailsScreen from './src/screens/DetailsScreen'
 import StoreProvider from './src/store/StoreProvider'
 import Login from './src/screens/Login'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-  const [isOnboarding, setIsOnboarding] = useState(true);
+  const [isOnboarding, setIsOnboarding] = useState("true");
+
+  const getOnboardingData = async () => {
+    try {
+      const data = await AsyncStorage.getItem('Onboarding')
+      if (data !== null) {
+        setIsOnboarding(data)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-
+    getOnboardingData()
   }, [])
 
   return (
@@ -25,7 +37,7 @@ const App = () => {
       <NavigationContainer>
         <StatusBar backgroundColor={'#FFF'} barStyle={'dark-content'} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {isOnboarding && <Stack.Screen name='Onboarding' component={OnboardingScreen} />}
+          {isOnboarding == 'true' && <Stack.Screen name='Onboarding' component={OnboardingScreen} />}
           <Stack.Screen name='Home' component={HomeScreen} />
           <Stack.Screen name='Details'
             component={DetailsScreen}

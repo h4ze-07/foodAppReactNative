@@ -6,13 +6,21 @@ import SearchSvg from '../../assets/svg/SearchSvg'
 import { categories, foods } from '../../constants'
 import CategoriesItem from '../../components/CategoriesItem'
 import FoodItem from '../../components/FoodItem'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const HomeTab = () => {
   const [name, setName] = useState('');
   const [activeCategory, setActiveCategory] = useState('');
 
-  useEffect(() => {
+  async function getNameFormStorage() {
+    const name = await AsyncStorage.getItem('UserName')
+    if (name !== null) {
+      setName(name)
+    }
+  }
 
+  useEffect(() => {
+    getNameFormStorage()
   }, [])
 
   const setCategory = (name: string) => {

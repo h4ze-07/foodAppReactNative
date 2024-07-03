@@ -15,13 +15,15 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-  const [isOnboarding, setIsOnboarding] = useState("true");
+  const [isOnboarding, setIsOnboarding] = useState<string | null>(null);
 
   const getOnboardingData = async () => {
     try {
       const data = await AsyncStorage.getItem('Onboarding')
       if (data !== null) {
         setIsOnboarding(data)
+      } else {
+        setIsOnboarding('true')
       }
     } catch (error) {
       console.log(error);
@@ -33,23 +35,25 @@ const App = () => {
   }, [])
 
   return (
-    <StoreProvider>
-      <NavigationContainer>
-        <StatusBar backgroundColor={'#FFF'} barStyle={'dark-content'} />
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {isOnboarding == 'true' && <Stack.Screen name='Onboarding' component={OnboardingScreen} />}
-          <Stack.Screen name='Home' component={HomeScreen} />
-          <Stack.Screen name='Details'
-            component={DetailsScreen}
-            options={{
-              headerShown: true,
-              // headerLeft: () => <Ionicons name='search' size={20} onPress={navigateBack} />,
-            }}
-          />
-          <Stack.Screen name='Login' component={Login} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </StoreProvider>
+    isOnboarding !== null && (
+      <StoreProvider>
+        <NavigationContainer>
+          <StatusBar backgroundColor={'#FFF'} barStyle={'dark-content'} />
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            {isOnboarding == 'true' && <Stack.Screen name='Onboarding' component={OnboardingScreen} />}
+            <Stack.Screen name='Home' component={HomeScreen} />
+            <Stack.Screen name='Details'
+              component={DetailsScreen}
+              options={{
+                headerShown: true,
+                // headerLeft: () => <Ionicons name='search' size={20} onPress={navigateBack} />,
+              }}
+            />
+            <Stack.Screen name='Login' component={Login} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </StoreProvider>
+    )
   )
 }
 

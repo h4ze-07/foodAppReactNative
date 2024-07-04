@@ -19,7 +19,7 @@ const DetailsScreen = () => {
     setIsLiked(store.isItemInLikedFood(name))
   }, [])
 
-  const { image, name, price, ingredients, id } = route.params;
+  const { image, name } = route.params;
   const { ...itemToLiked } = route.params;
 
   const handleLikeClick = () => {
@@ -30,6 +30,10 @@ const DetailsScreen = () => {
       store.addToLiked(itemToLiked)
       setIsLiked(true)
     }
+  }
+
+  const handleAddToCart = () => {
+    store.addNewItemToCart(itemToLiked);
   }
 
   return (
@@ -57,7 +61,7 @@ const DetailsScreen = () => {
             text='Add To Cart'
             containerStyles='bg-mainWhite py-[15px] my-[40px] rounded-[40px]'
             textStyles='text-primary font-bold text-[20px] text-center'
-            onClick={console.log}
+            onClick={handleAddToCart}
           />
         </View>
       </ScrollView>

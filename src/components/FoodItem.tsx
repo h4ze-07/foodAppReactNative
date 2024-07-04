@@ -4,24 +4,22 @@ import { ParamList, TFoodCardProps } from '../types'
 import CustomButton from './CustomButton'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { observer } from 'mobx-react-lite'
+import { useStore } from '../store/StoreProvider'
 
-const FoodItem = ({ name, ingredients, image, price, id }: TFoodCardProps) => {
-
+const FoodItem = ({item}: {item: TFoodCardProps}) => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const { name, ingredients, image, price, id } = item;
+    const {store} = useStore();
+
 
     const handleAddQuantity = () => {
-
+        store.addNewItemToCart(item)
     }
 
 
     const navigateToDetails = () => {
-        navigation.navigate('Details', {
-            name: name,
-            image: image,
-            id: id,
-            price: price,
-            ingredients: ingredients
-        })
+        navigation.navigate('Details', {...item})
     }
 
     return (
@@ -53,7 +51,7 @@ const FoodItem = ({ name, ingredients, image, price, id }: TFoodCardProps) => {
                         text='+'
                         textStyles='color-mainWhite text-[30px]'
                         containerStyles='bg-primary flex flex-row items-center justify-center rounded-full w-[40px] h-[40px]'
-                        onClick={console.log}
+                        onClick={handleAddQuantity}
                     />
                 </View>
             </View>
@@ -61,4 +59,4 @@ const FoodItem = ({ name, ingredients, image, price, id }: TFoodCardProps) => {
     )
 }
 
-export default FoodItem
+export default observer(FoodItem)

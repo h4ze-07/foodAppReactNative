@@ -93,7 +93,7 @@ export class appStore {
     get totalCartAmount() {
         return this.cart.reduce((pr, curr) => {
             return pr + (Number(curr.price) * curr.quantity)
-        }, 0)
+        }, 0).toFixed(2)
     }
 
     clearCart() {
@@ -121,7 +121,7 @@ export class appStore {
     addQuantity(name: string) {
         const newCart = this.cart.map(item => {
             if (item.name === name) {
-                return { ...item, quantity: item.quantity++ }
+                return { ...item, quantity: item.quantity + 1 }
             } else {
                 return item;
             }
@@ -139,7 +139,7 @@ export class appStore {
         } else {
             const newCart = this.cart.map(item => {
                 if (item.name === name) {
-                    return { ...item, quantity: item.quantity-- }
+                    return { ...item, quantity: item.quantity - 1 }
                 } else {
                     return item;
                 }

@@ -68,7 +68,7 @@ const HomeTab = () => {
         <View className='mx-auto'>
           <FlatList
             data={foods}
-            renderItem={({ item }) => <FoodItem {...item} />}
+            renderItem={({ item }) => <FoodItem item={item} />}
             keyExtractor={item => item.id}
             showsVerticalScrollIndicator={false}
             numColumns={2}

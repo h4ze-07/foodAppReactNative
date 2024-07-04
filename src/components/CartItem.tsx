@@ -1,9 +1,22 @@
 import { Image, Text, View } from 'react-native'
 import React from 'react'
 import CustomButton from './CustomButton'
-import { TStoreItem } from '../types'
+import { TCartItem, TStoreItem } from '../types'
+import { useStore } from '../store/StoreProvider'
+import { observer } from 'mobx-react-lite'
 
-const CartItem = ({ image, name, price, ingredients }: TStoreItem) => {
+const CartItem = ({ image, name, price, ingredients, quantity }: TCartItem) => {
+
+    const {store} = useStore();
+
+    const addQuantity = () => {
+        store.addQuantity(name)
+    }
+
+    const reduceQuantity = () => {
+        store.reduceQuantity(name)
+    }
+
     return (
         <View className='mx-auto w-[95%] py-[10px] border border-slate-200 rounded-[20px] bg-mainWhite flex flex-row justify-between items-center px-[5px]'>
             <View>
@@ -15,19 +28,19 @@ const CartItem = ({ image, name, price, ingredients }: TStoreItem) => {
                 <Text className='font-bold text-mainDark text-[18px]'>${price}</Text>
             </View>
             <View className='items-center'>
-                <Text className='text-mainDark font-semibold text-[20px] mb-[10px]'>{3}</Text>
+                <Text className='text-mainDark font-semibold text-[20px] mb-[10px]'>{quantity}</Text>
                 <View className='flex flex-row border border-primary rounded-[15px] overflow-hidden'>
                     <CustomButton
                         text='-'
                         textStyles='font-bold text-mainWhite'
                         containerStyles='bg-red-500 px-[20] py-[4]'
-                        onClick={console.log}
+                        onClick={reduceQuantity}
                     />
                     <CustomButton
                         text='+'
                         textStyles='font-bold text-mainWhite'
                         containerStyles='bg-red-500 px-[20] py-[4]'
-                        onClick={console.log}
+                        onClick={addQuantity}
                     />
                 </View>
             </View>
@@ -35,4 +48,4 @@ const CartItem = ({ image, name, price, ingredients }: TStoreItem) => {
     )
 }
 
-export default CartItem
+export default observer(CartItem)

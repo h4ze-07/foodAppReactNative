@@ -7,6 +7,7 @@ import CartItem from '../../components/CartItem'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useStore } from '../../store/StoreProvider'
+import { observer } from 'mobx-react-lite'
 
 const CartTab = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -15,6 +16,10 @@ const CartTab = () => {
 
   function navigateHome() {
     navigation.push('Home')
+  }
+
+  function handleCheckoutClick() {
+    store.clearCart();
   }
 
   return (
@@ -44,13 +49,13 @@ const CartTab = () => {
             <View className='pt-[40px] px-[5px]'>
               <View className='flex flex-row justify-between'>
                 <Text className='text-mainDark font-bold text-[24px]'>Total price:</Text>
-                <Text className='text-mainDark font-bold text-[24px]'>${50}</Text>
+                <Text className='text-mainDark font-bold text-[24px]'>${store.totalCartAmount}</Text>
               </View>
               <CustomButton
                 text='Checkout'
                 textStyles='text-mainWhite font-bold text-center text-[20px]'
                 containerStyles='bg-primary py-3 mt-[40px] mb-[50px] w-[70%] mx-auto rounded-[15px]'
-                onClick={console.log}
+                onClick={handleCheckoutClick}
               />
             </View>
           </>
@@ -59,5 +64,5 @@ const CartTab = () => {
   )
 }
 
-export default CartTab
+export default observer(CartTab)
 

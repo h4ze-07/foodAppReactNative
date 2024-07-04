@@ -48,6 +48,7 @@ export type TFoodCardProps = {
 
 export type TStoreItem = TFoodCardProps;
 
+export type TCartItem = TFoodCardProps & {quantity: number}
 
 export type TStoreContext = {
     store: appStore

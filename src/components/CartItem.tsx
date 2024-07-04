@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Text, View } from 'react-native'
 import React from 'react'
 import CustomButton from './CustomButton'
 import { TStoreItem } from '../types'

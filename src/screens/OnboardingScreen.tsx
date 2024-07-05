@@ -1,6 +1,5 @@
 import { Dimensions, FlatList, NativeScrollEvent, NativeSyntheticEvent, StyleSheet, Text, View } from 'react-native'
 import React, { useRef, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { onboarding } from '../constants'
 import OnboardingItem from '../components/OnboardingItem'
 

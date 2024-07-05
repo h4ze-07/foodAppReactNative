@@ -1,7 +1,7 @@
 import { Image, Text, View } from 'react-native'
 import React from 'react'
 import CustomButton from './CustomButton'
-import { TCartItem, TStoreItem } from '../types'
+import { TCartItem } from '../types'
 import { useStore } from '../store/StoreProvider'
 import { observer } from 'mobx-react-lite'
 

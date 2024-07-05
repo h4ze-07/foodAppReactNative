@@ -1,16 +1,14 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React, { useContext } from 'react'
+import { FlatList, Text, View } from 'react-native'
+import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import LikedListItem from '../../components/LikedListItem';
 import { observer } from 'mobx-react-lite';
-import { storeContext, useStore } from '../../store/StoreProvider';
+import { useStore } from '../../store/StoreProvider';
 
 
 const LikedTab = observer(() => {
 
   const { store } = useStore();
-
-
 
   return (
     <SafeAreaView className='flex-1 bg-mainWhite p-[10]'>

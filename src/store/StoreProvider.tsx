@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React, { createContext, useContext } from 'react'
 import { appStore } from '.';
 import { TStoreContext } from '../types';

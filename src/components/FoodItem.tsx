@@ -1,6 +1,6 @@
-import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
+import { Image, Text, TouchableWithoutFeedback, View } from 'react-native'
 import React from 'react'
-import { ParamList, TFoodCardProps } from '../types'
+import { TFoodCardProps } from '../types'
 import CustomButton from './CustomButton'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'

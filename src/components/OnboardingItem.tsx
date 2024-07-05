@@ -1,5 +1,5 @@
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import { Image, Text, View } from 'react-native'
+import React from 'react'
 import { TOnboardingItemProps } from '../types'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TextLink from './TextLink';

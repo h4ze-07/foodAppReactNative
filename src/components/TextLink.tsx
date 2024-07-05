@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
+import { Text, TouchableWithoutFeedback, View } from 'react-native'
 import React from 'react'
 import { TexlLinkProps } from '../types'
 
@@ -13,5 +13,3 @@ const TextLink = ({ text, textStyles, containerStyles, onClick }: TexlLinkProps)
 }
 
 export default TextLink
-
-const styles = StyleSheet.create({})

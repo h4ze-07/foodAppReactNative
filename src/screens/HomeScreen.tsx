@@ -1,5 +1,3 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeTab from './tabs/HomeTab';
 import LikedTab from './tabs/LikedTab';
@@ -9,7 +7,6 @@ import LikeSvg from '../assets/svg/LikeSvg';
 import CartSvg from '../assets/svg/CartSvg';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SkeletonHomeScreen from './SkeletonHomeScreen';
-import StoreProvider from '../store/StoreProvider';
 
 const Tab = createBottomTabNavigator();
 

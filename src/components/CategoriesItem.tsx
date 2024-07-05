@@ -1,5 +1,4 @@
-import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
-import React from 'react'
+import { Image, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { TCategoriesProps } from '../types'
 
 const CategoriesItem = ({ name, image, activeCategory, setCategory }: TCategoriesProps) => {
